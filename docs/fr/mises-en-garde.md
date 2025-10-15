@@ -80,7 +80,7 @@ clé doit être générée pour éviter tout accès non-autorisé à votre compt
 
 ## Assistance
 
-!> Le MSSS n'offre aucun support pour les scripts ou les automatisations que
+!> Sante.Québec n'offre aucun support pour les scripts ou les automatisations que
    vous pourriez mettre en place.
 
 Si vous avez des questions ou des problèmes avec les scripts ou les

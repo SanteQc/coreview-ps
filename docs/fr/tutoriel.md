@@ -35,7 +35,7 @@ clé d'API. Vous pouvez créer un SecureString à partir de la clé d'API brute 
 la manière suivante:
 
 ```powershell
-$CleApi = 'abcd1234efgh5678ijkl9012mnop3456qrst7890uvwx1234yzab5678cdef9012'
+$CleApi = '***************'
 $CleApiSS = ConvertTo-SecureString -String $CleApi -AsPlainText -Force
 ```
 
@@ -74,7 +74,7 @@ caractères, généralement sous la forme `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 
 Pour cet exemple, nous utiliserons le flux intitulé
 `MED - Changement numéro de permis résident a permanent` et ayant l'identifiant
-unique `ab61f181-8b6e-4479-8327-755429b038da`.
+unique `abdef181-8b6e-****-****-************`.
 
 ### Obtention des paramètres d'entrée
 
@@ -84,7 +84,7 @@ liste des paramètres requis pour démarrer le flux. Ces paramètres sont propre
 `Get-CvCfFlowInputParameters`:
 
 ```powershell
-$IdFlux = 'ab61f181-8b6e-4479-8327-755429b038da'
+$IdFlux = 'abdef181-8b6e-****-****-************'
 Get-CvCfFlowInputParameters -FlowId $IdFlux
 ```
 
@@ -120,9 +120,9 @@ valeurs des paramètres requis par le flux:
 
 ```powershell
 $ChargeUtile = @{
-    UserPrincipalName = 'marcel.untel@sante.quebec'
+    UserPrincipalName = 'marcel.untel@adresse.courriel'
     NouveauNumeroPermis = '12345'
-    AncienNumeroPermis = 'R67891'
+    AncienNumeroPermis = 'R98765'
     AdresseCourrielPourErreurs = 'mon@adresse.courriel'
 }
 ```
@@ -154,11 +154,11 @@ $CleApiSS = ConvertTo-SecureString -String $CleApi -AsPlainText -Force
 Connect-CvAPI -ApiKey $CleApiSS
 
 # Démarrage d'un flux:
-$IdFlux = 'ab61f181-8b6e-4479-8327-755429b038da'
+$IdFlux = 'abdef181-8b6e-****-****-************'
 $ChargeUtile = @{
-    UserPrincipalName = 'marcel.untel@sante.quebec'
+    UserPrincipalName = 'marcel.untel@dresse.courriel'
     NouveauNumeroPermis = '12345'
-    AncienNumeroPermis = 'R67891'
+    AncienNumeroPermis = 'R98765'
     AdresseCourrielPourErreurs = 'mon@adresse.courriel'
 }
 $IdExecution = New-CvCfFlowExecution -FlowId $IdFlux -InputParameters $ChargeUtile

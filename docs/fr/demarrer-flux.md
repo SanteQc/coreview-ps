@@ -13,7 +13,7 @@ caractères, généralement sous la forme `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 
 Pour cet exemple, nous utiliserons le flux intitulé
 `MED - Changement numéro de permis résident a permanent` et ayant l'identifiant
-unique `ab61f181-8b6e-4479-8327-755429b038da`.
+unique `abcdef181-8b6e-****-****-************`.
 
 ## Obtention des paramètres d'entrée
 
@@ -23,7 +23,7 @@ liste des paramètres requis pour démarrer le flux. Ces paramètres sont propre
 `Get-CvCfFlowInputParameters`:
 
 ```powershell
-$IdFlux = 'ab61f181-8b6e-4479-8327-755429b038da'
+$IdFlux = 'abcdef181-8b6e-****-****-************'
 Get-CvCfFlowInputParameters -FlowId $IdFlux
 ```
 
@@ -59,7 +59,7 @@ valeurs des paramètres requis par le flux:
 
 ```powershell
 $ChargeUtile = @{
-    UserPrincipalName = 'marcel.untel@sante.quebec'
+    UserPrincipalName = 'marcel.untel@adresse.courriel'
     NouveauNumeroPermis = '12345'
     AncienNumeroPermis = 'R67891'
     AdresseCourrielPourErreurs = 'mon@adresse.courriel'
@@ -128,8 +128,8 @@ Voici un exemple de retour, lorsque convertit en JSON:
 
 ```json
 {
-    "ExecutionId": "a0aa7a75-dfa3-4dff-9e65-8b0ef957aaae",
-    "FlowId": "a3fe98e9-92e5-4576-ab9c-e01fcff85bba",
+    "ExecutionId": "12345678-dfa3-****-*****-************",
+    "FlowId": "abcde98e9-92e5-****-****-************",
     "Status": "Failed",
     "Error": {
         "StepName": "Arrêter le flux si le nouvel établissement est interdit",
@@ -139,9 +139,9 @@ Voici un exemple de retour, lorsque convertit en JSON:
     },
     "Input": {
         "UserPrincipalName": "maxime.untel.med@ssss.gouv.qc.ca",
-        "AcronymesEtablissements": "CISSSAT",
+        "AcronymesEtablissements": "ETABLISSEMENT",
         "Action": "Ajout",
-        "AdresseCourrielPourErreurs": "solange.untel@ssss.gouv.qc.ca"
+        "AdresseCourrielPourErreurs": "solange.untel@domaine.courriel"
     },
     "ExecutionHistory": [
         {
@@ -150,18 +150,18 @@ Voici un exemple de retour, lorsque convertit en JSON:
                 "LstAncienNoPermis": [],
                 "Identifiant": "EXT",
                 "LstEtablissements": [
-                    "CUSM"
+                    "ETAB"
                 ],
-                "Attribut11Canonique": "EXT-E12345678-CUSM-",
-                "Etablissements": "CUSM",
-                "NouvelleValeurAttribut11": "EXT-E12345678-CUSM-",
+                "Attribut11Canonique": "EXT-E12345678-ETAB-",
+                "Etablissements": "ETAB",
+                "NouvelleValeurAttribut11": "EXT-E12345678-ETAB-",
                 "AncienNoPermis": ""
             },
             "StepName": "Extraire l'ancien attribut 11"
         },
         {
             "Output": {
-                "Erreur": "Le code de médecin `EXT-E12345678-CISSSAT/CUSM-` est invalide : \nL'acronyme d'établissement `CISSSAT` n'est pas permis. Seuls les établissements suivants sont autorisés: CHUQ, CIUSSSECHUS, CHUM, CUSM.\nVeuillez consulter la nomenclature de l'attribut 11 pour connaître les modalités qui s'appliquent aux comptes externes."
+                "Erreur": "Le code de médecin `EXT-E12345678-ETAB-` est invalide : \nL'acronyme d'établissement `ETAB` n'est pas permis. Seuls les établissements suivants sont autorisés:X,Y,Z,ETAB.\nVeuillez consulter la nomenclature de l'attribut 11 pour connaître les modalités qui s'appliquent aux comptes externes."
             },
             "StepName": "Évaluer les problèmes avec l'ajout"
         }

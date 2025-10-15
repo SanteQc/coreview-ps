@@ -68,7 +68,7 @@ le module [SecretManagement]. Vous pouvez le faire en exécutant les commandes
 suivantes dans une session PowerShell 7:
 
 ```powershell
-$CleApi = 'abcd1234efgh5678ijkl9012mnop3456qrst7890uvwx1234yzab5678cdef9012'
+$CleApi = '************'
 $NomDeLaCle = 'CleApiCoreView'
 
 # Sauvegarde de la clé d'API dans le coffre-fort:
